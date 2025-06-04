@@ -37,6 +37,55 @@ jspm_packages/
 *.njsproj
 *.sln
 *.sw?
+.vscode/
+*.code-workspace
+
+# Java specific
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+build/
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# IntelliJ IDEA
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+
+# Spring Boot
+*.pid
+*.springBeans
+spring-configuration-metadata.json
 
 # MacOS specific files
 .DS_Store

@@ -1,26 +1,25 @@
 {
-  "name": "demo-copilot-agent-mode",
-  "version": "1.0.0",
-  "description": "OctoCAT Supply Chain Management System",
-  "private": true,
-  "workspaces": [
-    "api",
-    "frontend"
-  ],
-  "scripts": {
-    "build": "npm run build --workspaces",
-    "start": "npm run start:install --workspace=api",
-    "dev:api": "npm run dev --workspace=api",
-    "dev:frontend": "npm run dev --workspace=frontend",
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:frontend\"",
-    "test": "npm run test --workspaces",
-    "lint": "npm run lint --workspace=frontend"
-  },
-  "devDependencies": {
-    "concurrently": "^6.2.1"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  }
+    "name": "expert-octo-garbanzo",
+    "version": "1.0.0",
+    "description": "OctoCAT Supply Chain Management System",
+    "private": true,
+    "workspaces": [
+      "frontend"
+    ],
+    "scripts": {
+      "build": "concurrently \"cd api && mvn clean package\" \"npm run build --workspace=frontend\"",
+      "dev:api": "cd api && mvn spring-boot:run",
+      "dev:frontend": "npm run dev --workspace=frontend",
+      "dev": "concurrently \"npm run dev:api\" \"npm run dev:frontend\"",
+      "test": "cd api && mvn test",
+      "lint": "npm run lint --workspace=frontend",
+      "coverage": "cd api && mvn test clover:clover"
+    },
+    "devDependencies": {
+      "concurrently": "^6.2.1"
+    },
+    "license": "MIT",
+    "engines": {
+      "node": ">=18"
+    }
 }

@@ -1,18 +1,15 @@
 import React from 'react';
-import { useTheme } from '../context/ThemeContext';
 
 const Footer: React.FC = () => {
-  const { darkMode } = useTheme();
-  
   return (
-    <footer className={`${darkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-200 text-gray-700'} py-8 transition-colors duration-300`}>
+    <footer className="bg-gray-900 text-gray-300 py-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
             <h2 className="font-bold text-xl mb-4 text-primary">About</h2>
             <p className="text-sm">
-              OctoCAT Supply is the leading provider of AI-powered smart products for your feline companions. Our innovative technology enhances your cat's wellbeing through intelligent monitoring, interactive entertainment, and personalized comfort solutions.
+              OctoCAT Supply is a world leader in complex logistics and supply chain solutions. We specialize in providing tailored services to meet the unique needs of our clients, ensuring efficiency and reliability in every delivery.
             </p>
           </div>
 
@@ -53,7 +50,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className={`mt-8 pt-8 ${darkMode ? 'border-gray-700' : 'border-gray-300'} border-t text-center text-sm transition-colors duration-300`}>
+        <div className="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
           <p>Copyright © 2025 OctoCAT Supply. All Rights Reserved</p>
         </div>
       </div>

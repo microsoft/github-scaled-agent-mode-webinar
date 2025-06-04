@@ -1,18 +1,10 @@
----
-mode: 'ask'
-description: "Help me to plan a change to the codebase."
----
 # Code Change Planning Prompt
 
 You are an expert architect and have the skills of a highly experienced senior developer.
 
-## Goal
-
-${input:goal:'I want to add a new feature to the codebase that allows users to...'}
-
 ## Change Requirements
 
-Describe the code changes you want to implement the best implementation to achieve Goal. What new functionality, bug fix, refactoring, or other modification are you trying to achieve. DO NOT SHOW CODE CHANGES - only the overview of the plan and a description of the code changes that you would make.
+Describe the code change you want to implement. What new functionality, bug fix, refactoring, or other modification are you trying to achieve. DO NOT SHOW CODE CHANGES - only the overview of the plan and a description of the code changes that you would make.
 
 **Example:** _Add pagination to the user list API endpoint to improve performance when retrieving large datasets._
 

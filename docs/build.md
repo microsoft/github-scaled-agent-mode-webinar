@@ -8,6 +8,7 @@ This guide provides instructions for building, running, and testing the OctoCAT 
 - npm (latest version recommended)
 - Docker/Podman (optional, for containerization)
 
+<<<<<<< HEAD
 ### Additional prerequisited for Python API
 
 - Python 3.12 (or later)
@@ -24,6 +25,8 @@ This guide provides instructions for building, running, and testing the OctoCAT 
    ```bash
    npm install
    ```
+=======
+>>>>>>> c36b759 (fix: remove outdated instruction for code compilation verification)
 
 ## Building the Application
 
@@ -36,7 +39,7 @@ You can build the entire application or its individual components using the foll
 npm run build
 
 # Build only the API component
-npm run build --workspace=api
+cd api && mvn clean compile
 
 # Build only the Frontend component
 npm run build --workspace=frontend
@@ -89,8 +92,8 @@ This will start both the API and Frontend in development mode with the integrate
 # Run all tests across all workspaces
 npm run test
 
-# Run tests for a specific workspace
-npm run test --workspace=api
+# Run tests for the API
+cd api && mvn test
 ```
 
 ### Linting

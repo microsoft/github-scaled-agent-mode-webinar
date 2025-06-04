@@ -1,0 +1,23 @@
+# IDE
+.apt_generated
+.factorypath
+.springBeans
+
+# Build output
+/target/
+
+# Local .env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Spring Boot
+application-*.properties
+!application.properties
+
+# Visual Studio Code - project specific settings
+.settings/
+.project
+.classpath
+.sts4-cache/
