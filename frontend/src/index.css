@@ -18,43 +18,7 @@ body {
   min-height: 100vh;
 }
 
-/* Custom Scrollbar - Dark Mode */
-.dark ::-webkit-scrollbar {
-  width: 8px;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #0A0A0A;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #76B852;
-  border-radius: 4px;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #8BC34A;
-}
-
-/* Custom Scrollbar - Light Mode */
-.light ::-webkit-scrollbar {
-  width: 8px;
-}
-
-.light ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.light ::-webkit-scrollbar-thumb {
-  background: #76B852;
-  border-radius: 4px;
-}
-
-.light ::-webkit-scrollbar-thumb:hover {
-  background: #8BC34A;
-}
-
-/* Fallback for non-class-based scrollbars */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -89,11 +53,4 @@ body {
 .slick-track {
   display: flex !important;
   align-items: center !important;
-}
-
-/* Theme-specific transition utilities */
-.transition-colors {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
 }

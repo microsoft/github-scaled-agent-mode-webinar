@@ -1,26 +1,28 @@
 {
-  "name": "demo-copilot-agent-mode",
-  "version": "1.0.0",
-  "description": "OctoCAT Supply Chain Management System",
-  "private": true,
-  "workspaces": [
-    "api",
-    "frontend"
-  ],
-  "scripts": {
-    "build": "npm run build --workspaces",
-    "start": "npm run start:install --workspace=api",
-    "dev:api": "npm run dev --workspace=api",
-    "dev:frontend": "npm run dev --workspace=frontend",
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:frontend\"",
-    "test": "npm run test --workspaces",
-    "lint": "npm run lint --workspace=frontend"
-  },
-  "devDependencies": {
-    "concurrently": "^6.2.1"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  }
+    "name": "expert-octo-garbanzo",
+    "version": "1.0.0",
+    "description": "OctoCAT Supply Chain Management System",
+    "private": true,
+    "workspaces": [
+      "frontend"
+    ],
+    "scripts": {
+      "build": "npm run build:frontend && npm run build:api",
+      "build:frontend": "npm run build --workspace=frontend",
+      "build:api": "cd api && python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt",
+      "start:api": "cd api && . .venv/bin/activate && uvicorn app.main:app --reload --port 3000",
+      "start:frontend": "npm run dev --workspace=frontend",
+      "dev": "concurrently \"npm run start:api\" \"npm run start:frontend\"",
+      "test": "concurrently \"cd api && . .venv/bin/activate && pytest\" \"npm run test --workspace=frontend\"",
+      "test:api": "cd api && . .venv/bin/activate && pytest",
+      "test:frontend": "npm run test --workspace=frontend",
+      "lint": "npm run lint --workspace=frontend"
+    },
+    "devDependencies": {
+      "concurrently": "^6.2.1"
+    },
+    "license": "MIT",
+    "engines": {
+      "node": ">=18"
+    }
 }

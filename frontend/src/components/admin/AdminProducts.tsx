@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useTheme } from '../../context/ThemeContext';
 import { Navigate } from 'react-router-dom';
 import ProductForm from '../entity/product/ProductForm';
 import axios from 'axios';
@@ -25,7 +24,6 @@ interface Product {
   unit: string;
   imgName: string;
   supplier?: Supplier;
-  discount?: number;
 }
 
 type SortField = 'name' | 'price' | 'sku' | 'unit' | 'supplier';
@@ -33,7 +31,6 @@ type SortOrder = 'asc' | 'desc';
 
 export default function AdminProducts() {
   const { isAdmin } = useAuth();
-  const { darkMode } = useTheme();
   const [products, setProducts] = useState<Product[]>([]);
   const [suppliers, setSuppliers] = useState<Supplier[]>([]);
   const [editingProduct, setEditingProduct] = useState<Product | undefined>(undefined);
@@ -109,79 +106,71 @@ export default function AdminProducts() {
   }
 
   return (
-    <div className={`container mx-auto px-4 pt-20 pb-8 ${darkMode ? 'bg-dark' : 'bg-gray-100'} min-h-screen transition-colors duration-300`}>
+    <div className="container mx-auto px-4 pt-20 pb-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className={`text-2xl font-bold ${darkMode ? 'text-light' : 'text-gray-800'} transition-colors duration-300`}>Product Management</h1>
+        <h1 className="text-2xl font-bold text-light">Product Management</h1>
         <button
           onClick={() => {
             setEditingProduct(undefined);
             setShowForm(true);
           }}
-          className="px-4 py-2 bg-primary hover:bg-accent text-white rounded transition-colors duration-300"
+          className="px-4 py-2 bg-primary hover:bg-accent text-white rounded"
         >
           Add New Product
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-lg shadow-lg">
-        <table className={`min-w-full ${darkMode ? 'bg-dark' : 'bg-white'} rounded-lg overflow-hidden transition-colors duration-300`}>
-          <thead className={`${darkMode ? 'bg-gray-800' : 'bg-gray-200'} transition-colors duration-300`}>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-dark rounded-lg overflow-hidden">
+          <thead className="bg-gray-800">
             <tr>
               <th 
-                className={`px-6 py-3 text-left text-xs font-medium ${darkMode ? 'text-light' : 'text-gray-700'} uppercase tracking-wider cursor-pointer hover:${darkMode ? 'bg-gray-700' : 'bg-gray-300'} transition-colors duration-300`}
+                className="px-6 py-3 text-left text-xs font-medium text-light uppercase tracking-wider cursor-pointer hover:bg-gray-700"
                 onClick={() => handleSort('name')}
               >
                 Name {renderSortIcon('name')}
               </th>
               <th 
-                className={`px-6 py-3 text-left text-xs font-medium ${darkMode ? 'text-light' : 'text-gray-700'} uppercase tracking-wider cursor-pointer hover:${darkMode ? 'bg-gray-700' : 'bg-gray-300'} transition-colors duration-300`}
+                className="px-6 py-3 text-left text-xs font-medium text-light uppercase tracking-wider cursor-pointer hover:bg-gray-700"
                 onClick={() => handleSort('supplier')}
               >
                 Supplier {renderSortIcon('supplier')}
               </th>
               <th 
-                className={`px-6 py-3 text-left text-xs font-medium ${darkMode ? 'text-light' : 'text-gray-700'} uppercase tracking-wider cursor-pointer hover:${darkMode ? 'bg-gray-700' : 'bg-gray-300'} transition-colors duration-300`}
+                className="px-6 py-3 text-left text-xs font-medium text-light uppercase tracking-wider cursor-pointer hover:bg-gray-700"
                 onClick={() => handleSort('price')}
               >
                 Price {renderSortIcon('price')}
               </th>
               <th 
-                className={`px-6 py-3 text-left text-xs font-medium ${darkMode ? 'text-light' : 'text-gray-700'} uppercase tracking-wider cursor-pointer hover:${darkMode ? 'bg-gray-700' : 'bg-gray-300'} transition-colors duration-300`}
+                className="px-6 py-3 text-left text-xs font-medium text-light uppercase tracking-wider cursor-pointer hover:bg-gray-700"
                 onClick={() => handleSort('sku')}
               >
                 SKU {renderSortIcon('sku')}
               </th>
               <th 
-                className={`px-6 py-3 text-left text-xs font-medium ${darkMode ? 'text-light' : 'text-gray-700'} uppercase tracking-wider cursor-pointer hover:${darkMode ? 'bg-gray-700' : 'bg-gray-300'} transition-colors duration-300`}
+                className="px-6 py-3 text-left text-xs font-medium text-light uppercase tracking-wider cursor-pointer hover:bg-gray-700"
                 onClick={() => handleSort('unit')}
               >
                 Unit {renderSortIcon('unit')}
               </th>
-              <th 
-                className={`px-6 py-3 text-left text-xs font-medium ${darkMode ? 'text-light' : 'text-gray-700'} uppercase tracking-wider transition-colors duration-300`}
-              >
-                Discount
-              </th>
-              <th className={`px-6 py-3 text-left text-xs font-medium ${darkMode ? 'text-light' : 'text-gray-700'} uppercase tracking-wider transition-colors duration-300`}>
+              <th className="px-6 py-3 text-left text-xs font-medium text-light uppercase tracking-wider">
                 Description
               </th>
-              <th className={`px-6 py-3 text-right text-xs font-medium ${darkMode ? 'text-light' : 'text-gray-700'} uppercase tracking-wider transition-colors duration-300`}>
+              <th className="px-6 py-3 text-right text-xs font-medium text-light uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className={`divide-y ${darkMode ? 'divide-gray-700' : 'divide-gray-200'} transition-colors duration-300`}>
+          <tbody className="divide-y divide-gray-700">
             {sortedProducts.map(product => (
-              <tr key={product.productId} className={`hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'} transition-colors duration-300`}>
-                <td className={`px-6 py-4 whitespace-nowrap ${darkMode ? 'text-light' : 'text-gray-800'} transition-colors duration-300`}>{product.name}</td>
-                <td className={`px-6 py-4 whitespace-nowrap ${darkMode ? 'text-light' : 'text-gray-800'} transition-colors duration-300`}>{product.supplier?.name || 'Unknown'}</td>
-                <td className={`px-6 py-4 whitespace-nowrap ${darkMode ? 'text-light' : 'text-gray-800'} transition-colors duration-300`}>${product.price.toFixed(2)}</td>
-                <td className={`px-6 py-4 whitespace-nowrap ${darkMode ? 'text-light' : 'text-gray-800'} transition-colors duration-300`}>{product.sku}</td>
-                <td className={`px-6 py-4 whitespace-nowrap ${darkMode ? 'text-light' : 'text-gray-800'} transition-colors duration-300`}>{product.unit}</td>
-                <td className={`px-6 py-4 whitespace-nowrap ${darkMode ? 'text-light' : 'text-gray-800'} transition-colors duration-300`}>
-                  {product.discount ? `${(product.discount * 100).toFixed(0)}%` : '-'}
-                </td>
-                <td className={`px-6 py-4 ${darkMode ? 'text-light' : 'text-gray-800'} transition-colors duration-300`}>
+              <tr key={product.productId} className="hover:bg-gray-800">
+                <td className="px-6 py-4 whitespace-nowrap text-light">{product.name}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light">{product.supplier?.name || 'Unknown'}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light">${product.price.toFixed(2)}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light">{product.sku}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light">{product.unit}</td>
+                <td className="px-6 py-4 text-light">
                   <div className="max-w-xs truncate">{product.description}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm space-x-2">
@@ -190,7 +179,7 @@ export default function AdminProducts() {
                       setEditingProduct(product);
                       setShowForm(true);
                     }}
-                    className="inline-flex items-center px-3 py-1 bg-primary text-white rounded hover:bg-accent transition-colors duration-300"
+                    className="inline-flex items-center px-3 py-1 bg-primary text-white rounded hover:bg-accent"
                   >
                     Edit
                   </button>
@@ -205,7 +194,7 @@ export default function AdminProducts() {
                         }
                       }
                     }}
-                    className="inline-flex items-center px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition-colors duration-300"
+                    className="inline-flex items-center px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
                   >
                     Delete
                   </button>

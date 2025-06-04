@@ -19,5 +19,4 @@ services:
     depends_on:
       - api
     environment:
-      - API_HOST=api
-      - API_PORT=3000
+      - VITE_API_URL=http://localhost:3000

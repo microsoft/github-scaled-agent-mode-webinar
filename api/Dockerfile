@@ -1,16 +1,10 @@
-FROM node:20-alpine as builder
+FROM python:3.11-slim
 
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
-RUN npm run build
 
-FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install --omit=dev
-COPY --from=builder /app/dist ./dist
-
-EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000", "--proxy-headers"]
