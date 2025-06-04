@@ -46,3 +46,63 @@ jspm_packages/
 
 dist/
 coverage/
+
+# .NET Core
+*.swp
+*.db
+*.sqlite
+*.sqlite3
+project.lock.json
+project.fragment.lock.json
+
+# .NET Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Test Results
+api-tests/TestResults/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# .NET Core specific
+global.json
+BenchmarkDotNet.Artifacts/
+artifacts/
+
+# NuGet
+*.nupkg
+# NuGet v3's project.json files produces more ignorable files
+*.nuget.props
+*.nuget.targets
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# .NET Scaffolding
+ScaffoldingReadMe.txt
+
+# .NET Temporary Files
+*.[Cc]ache
+ClientBin/

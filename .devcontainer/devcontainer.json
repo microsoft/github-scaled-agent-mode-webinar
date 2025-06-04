@@ -28,8 +28,7 @@
 				"vitest.explorer",
 				"ms-vscode.vscode-speech",
 				"Blodwynn.featurehighlight",
-				"bierner.markdown-mermaid",
-				"ms-azuretools.vscode-bicep"
+				"ms-dotnettools.csharp"
 			],
 			"settings": {
 				"editor.inlineSuggest.experimentalInlineEditsEnabled": true,

@@ -1,26 +1,31 @@
 {
-  "name": "demo-copilot-agent-mode",
-  "version": "1.0.0",
-  "description": "OctoCAT Supply Chain Management System",
-  "private": true,
-  "workspaces": [
-    "api",
-    "frontend"
-  ],
-  "scripts": {
-    "build": "npm run build --workspaces",
-    "start": "npm run start:install --workspace=api",
-    "dev:api": "npm run dev --workspace=api",
-    "dev:frontend": "npm run dev --workspace=frontend",
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:frontend\"",
-    "test": "npm run test --workspaces",
-    "lint": "npm run lint --workspace=frontend"
-  },
-  "devDependencies": {
-    "concurrently": "^6.2.1"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  }
+    "name": "expert-octo-garbanzo",
+    "version": "1.0.0",
+    "description": "OctoCAT Supply Chain Management System",
+    "private": true,
+    "workspaces": [
+      "frontend"
+    ],
+    "scripts": {
+      "build": "npm run build:api && npm run build:frontend",
+      "build:api": "dotnet build api/api-dotnet.csproj",
+      "build:frontend": "npm run build --workspace=frontend",
+      "start": "npm run start:api",
+      "start:api": "dotnet run --project api/api-dotnet.csproj",
+      "dev:api": "dotnet watch run --project api/api-dotnet.csproj",
+      "dev:frontend": "npm run dev --workspace=frontend",
+      "dev": "concurrently \"npm run dev:api\" \"npm run dev:frontend\"",
+      "test:api": "dotnet test api-tests/api-tests.csproj -p:CollectCoverage=true -p:CoverletOutputFormat=cobertura -p:CoverletOutput=./TestResults/ -p:IncludeTestAssembly=false -p:ExcludeByFile=\"**/*.g.cs\"",
+      "test:api:report": "dotnet new tool-manifest --force || echo 'Tool manifest already exists' && dotnet tool install --local dotnet-reportgenerator-globaltool --version 5.1.26 || echo 'ReportGenerator already installed' && dotnet tool run reportgenerator -reports:./api-tests/TestResults/coverage.cobertura.xml -targetdir:./api-tests/TestResults/CoverageReport -reporttypes:Html",
+      "test:api:cover": "npm run test:api && npm run test:api:report",
+      "test": "npm run test:api && npm run test --workspace=frontend",
+      "lint": "npm run lint --workspace=frontend"
+    },
+    "devDependencies": {
+      "concurrently": "^6.2.1"
+    },
+    "license": "MIT",
+    "engines": {
+      "node": ">=18"
+    }
 }

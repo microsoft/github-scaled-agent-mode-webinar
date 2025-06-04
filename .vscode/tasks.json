@@ -17,8 +17,8 @@
         {
             "label": "Build API",
             "type": "shell",
-            "command": "npm",
-            "args": ["run", "build", "--workspace=api"],
+            "command": "dotnet",
+            "args": ["build", "${workspaceFolder}/api/api-dotnet.csproj"],
             "options": {
                 "cwd": "${workspaceFolder}"
             },
@@ -26,7 +26,7 @@
                 "reveal": "always",
                 "panel": "shared"
             },
-            "problemMatcher": ["$tsc"]
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "Build Frontend",

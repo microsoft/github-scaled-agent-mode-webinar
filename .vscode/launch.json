@@ -2,13 +2,43 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": ".NET API",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build API",
+            "program": "${workspaceFolder}/api/bin/Debug/net9.0/api-dotnet.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/api",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Frontend",
             "type": "node",
             "request": "launch",
-            "name": "Start API & Frontend",
-            "cwd": "${workspaceFolder}",
             "runtimeExecutable": "npm",
             "runtimeArgs": ["run", "dev"],
+            "cwd": "${workspaceFolder}/frontend",
             "console": "integratedTerminal"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Start API & Frontend",
+            "configurations": [".NET API", "Frontend"],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1
+            }
         }
     ]
 }

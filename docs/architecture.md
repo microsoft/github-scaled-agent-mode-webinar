@@ -9,9 +9,8 @@ The hero image and product images were created by prompting ChatGPT!
 The system is a modern supply chain management application built using TypeScript, comprising a backend REST API and a React frontend. It's designed to demonstrate Copilot capabilities using a fairly typical architecture with a little complexity, but not enough to derail demos!
 
 ### Backend Architecture
-- Express.js API with RESTful endpoints for all entities
+- Dotnet 9 API with RESTful endpoints for all entities
 - Swagger/OpenAPI documentation integration
-- Entity models with proper relationships following an ERD diagram
 
 ### Frontend Architecture
 - React 18+ with TypeScript
