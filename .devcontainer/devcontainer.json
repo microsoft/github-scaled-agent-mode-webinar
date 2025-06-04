@@ -1,0 +1,57 @@
+{
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"service": "dev",
+	"forwardPorts": [
+		3000,
+		5137
+	],
+	"portsAttributes": {
+		"3000": {
+			"label": "API",
+			"onAutoForward": "notify",
+			"visibility": "public"
+		},
+		"5137": {
+			"label": "Frontend",
+			"onAutoForward": "notify"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"GitHub.copilot",
+				"GitHub.copilot",
+				"ms-vscode.extension-test-runner",
+				"vitest.explorer",
+				"ms-vscode.vscode-speech",
+				"Blodwynn.featurehighlight",
+				"bierner.markdown-mermaid",
+				"ms-azuretools.vscode-bicep"
+			],
+			"settings": {
+				"editor.inlineSuggest.experimentalInlineEditsEnabled": true,
+				"github.copilot.chat.advanced.inlineEdits.enabled": true,
+				"github.copilot.chat.agent.enabled": true,
+				"github.copilot.chat.codesearch.enabled": true,
+				"github.copilot.chat.generateTests.codeLens": true,
+				"chat.agent.enabled": true,
+				"chat.promptFiles": true,
+				"git.enableSmartCommit": true,
+				"github.copilot.chat.search.semanticTextResults": true,
+				"github.copilot.chat.edits.temporalContext.enabled": true,
+				"github.copilot.chat.completionContext.typescript.mode": "on",
+				"github.copilot.chat.languageContext.typescript.enabled": true,
+				"github.copilot.nextEditSuggestions.enabled": true,
+				"github.copilot.chat.editor.temporalContext.enabled": true
+			}
+		}
+	},
+	"postCreateCommand": "npm install -g concurrently && npm run build",
+	"hostRequirements": {
+		"cpus": 4,
+		"memory": "8gb"
+	}
+}
