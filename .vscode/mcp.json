@@ -15,18 +15,12 @@
                 "--browser=msedge"
             ]
         },
-        "github": {
-            "command": "docker",
-            "args": [
-                "run",
-                "-i",
-                "--rm",
-                "-e",
-                "GITHUB_PERSONAL_ACCESS_TOKEN",
-                "ghcr.io/github/github-mcp-server"
-            ],
-            "env": {
-                "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+        "github-mcp-remote-capi-http": {
+            "type": "http",
+            "url": "https://api.githubcopilot.com/mcp/",
+            "headers": {
+                "Authorization": "Bearer ${input:github_token}",
+                "Copilot-Integration-Id": "playground-dev"
             }
         },
         "Azure MCP Server": {
