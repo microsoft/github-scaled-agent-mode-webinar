@@ -22,7 +22,7 @@ npm run test:api
 
 ## Agent Mode
 
-<!-- When in agent mode create a new branch when implementing a new feature. 
+When in agent mode create a new branch when implementing a new feature. 
 Make sure to switch to the new branch before making any changes. 
 Name that branch something descriptive, like `feature/your-feature-name`. 
-The feature name should be concise and describe what is being implemented. -->
+The feature name should be concise and describe what is being implemented.
